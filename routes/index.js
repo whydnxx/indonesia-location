@@ -8,29 +8,29 @@ router.get('/', function (req, res, next) {
 
 router.get('/province', function (req, res, next) {
   fs.readFile('./data/provinces.json', 'utf8', (err, data) => {
-    if (err) throw err;
-    res.send(JSON.parse(data));
+    if (err) return res.status(404).send({message: "Not found", succes: false});
+    return res.send(JSON.parse(data));
   });
 });
 
 router.get('/city/:id', function (req, res, next) {
   fs.readFile(`./data/cities/${req.params.id}.json`, 'utf8', (err, data) => {
-    if (err) throw err;
-    res.send(JSON.parse(data));
+    if (err) return res.status(404).send({message: "Not found", succes: false});
+    return res.send(JSON.parse(data));
   });
 });
 
 router.get('/district/:id', function (req, res, next) {
   fs.readFile(`./data/districts/${req.params.id}.json`, 'utf8', (err, data) => {
-    if (err) throw err;
-    res.send(JSON.parse(data));
+    if (err) return res.status(404).send({message: "Not found", succes: false});
+    return res.send(JSON.parse(data));
   });
 });
 
 router.get('/village/:id', function (req, res, next) {
   fs.readFile(`./data/villages/${req.params.id}.json`, 'utf8', (err, data) => {
-    if (err) throw err;
-    res.send(JSON.parse(data));
+    if (err) return res.status(404).send({message: "Not found", succes: false});
+    return res.send(JSON.parse(data));
   });
 });
 
